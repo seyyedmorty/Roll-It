@@ -33,10 +33,12 @@ class MainActivity : AppCompatActivity() {
         showButton = findViewById(R.id.show_button)
 
 
+
         rollButton.setOnClickListener {
             val rollNumber = Random.nextInt(1, 7)
             val shake = AnimationUtils.loadAnimation(this, R.anim.shake)
             val fadeIn = AnimationUtils.loadAnimation(this,R.anim.fade_in)
+            val fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
             diceFaces.startAnimation(shake)
             val drawableResource = when (rollNumber) {
                 1 ->
@@ -51,12 +53,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             if(drawableResource == R.drawable.dice_6){
+                rollButton.startAnimation(fadeOut)
+                rollButton.visibility = View.INVISIBLE
                 showButton.visibility = View.VISIBLE
                 showButton.startAnimation(fadeIn)
                 Toast.makeText(this,"YAY!! Let's see the PRIZE!", Toast.LENGTH_SHORT).show()
             }
             showButton.setOnClickListener {
                 diceFaces.setImageResource(R.drawable.fuckgorilla)
+                showButton.startAnimation(fadeOut)
+                rollButton.startAnimation(fadeIn)
+                showButton.visibility = View.INVISIBLE
+                rollButton.visibility = View.VISIBLE
             }
             diceFaces.setImageResource(drawableResource)
         }
