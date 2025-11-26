@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             if(drawableResource == R.drawable.dice_6){
                 showButton.visibility = View.VISIBLE
                 showButton.startAnimation(fadeIn)
-                Toast.makeText(this,"بزن رو کمه تا جایزه تو ببینی", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"YAY!! Let's see the PRIZE!", Toast.LENGTH_SHORT).show()
             }
             showButton.setOnClickListener {
                 diceFaces.setImageResource(R.drawable.fuckgorilla)
